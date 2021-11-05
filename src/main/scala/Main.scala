@@ -24,12 +24,14 @@ object Main {
       n+=1
     }
 
+    n = 0
     println("end airports\n\n\n-------------------------------------------------\n\n\tthe countries\n")
     while (n<=10 &&  countries.hasNext){
       println(countries.next().name)
       n+=1
     }
 
+    n = 0
     println("end countries\n\n\n------------------------------------------------\n\n\tthe runways\n")
     while (n<=10 &&  runways.hasNext){
       println(runways.next().airportIdent)
