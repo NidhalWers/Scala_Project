@@ -1,6 +1,6 @@
 package models
 
-case class Countries(id : Int,
+case class Countries(id : String,
                      code : String,
                      name : String,
                      continent : String,
@@ -9,9 +9,9 @@ case class Countries(id : Int,
 
 object Countries{
   def apply(line : String): Countries = {
-    val data = line.split("," )
+    val data = line.split(",(?=(?:[^\"]*\"[^\"]*\")*[^\"]*$)", -1)
     new Countries(
-      data(0).toInt,
+      data(0),
       data(1),
       data(2),
       data(3),

@@ -1,6 +1,6 @@
 package models
 
-case class Runways(id : Int,
+case class Runways(id : String,
                    airportRef : Int,
                    airportIdent: String,
                    lengthFt : String,
@@ -23,9 +23,9 @@ case class Runways(id : Int,
 
 object Runways {
   def apply(line : String): Runways = {
-    val data = line.split(",")
+    val data = line.split(",(?=(?:[^\"]*\"[^\"]*\")*[^\"]*$)", -1)
     new Runways(
-      data(0).toInt,
+      data(0),
       data(1).toInt,
       data(2),
       data(3),
