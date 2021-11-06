@@ -9,6 +9,7 @@ class AirportService {
   }
 
   def getAirportsInCountry(countryCode: String, airports: Iterator[Airport]) : List[Airport] = {
+    //println(airports.toList )
     airports.filter( a => a.isoCountry match{
       case None => false
       case Some(value) => value.equals(countryCode)
