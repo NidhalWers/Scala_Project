@@ -12,7 +12,7 @@ class AirportService {
     airports.filter( a => a.isoCountry match{
       case None => false
       case Some(value) => value.equals(countryCode)
-    } ).toList  //todo map en tuple (ident, name)
+    } ).toList
   }
 
 }

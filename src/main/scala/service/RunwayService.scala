@@ -16,19 +16,19 @@ class RunwayService {
    * @param runways
    * @return
    */
-  def getRunwaysInAirport(airports: List[ (String,String) ], runways: Iterator[Runway]): Map[String, List[Runway]] = {
-    def aux(airports: List[ (String,String) ], runways: Iterator[Runway], acc: Map[String, List[Runway]] ): Map[String, List[Runway]] = airports match{
+  def getRunwaysInAirport(airports: List[ (Option[String],Option[String])], runways: Iterator[Runway]): Map[Option[String], List[Runway]] = {
+    def aux(airports: List[ (Option[String],Option[String]) ], runways: Iterator[Runway], acc: Map[Option[String], List[Runway]] ): Map[Option[String], List[Runway]] = airports match{
       case Nil => acc
       case ( ident, name ) :: xs =>
         val choosedRunways = runways.filter( r => r.airportIdent match {
           case None => false
-          case Some(value) => value.equals(ident)
+          case value => value.equals(ident)
         }).toList
 
         aux(xs, runways, acc + ( name -> choosedRunways ) )
 
     }
-    aux(airports, runways, Map[String, List[Runway]]())
+    aux(airports, runways, Map[Option[String], List[Runway]]())
   }
 
 }
