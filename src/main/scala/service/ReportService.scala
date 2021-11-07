@@ -9,7 +9,8 @@ class ReportService {
   def getTenCountriesHighestNumberOfAirports(airports : List[Airport]): Map[String, Int] = {
     val mapOfNumber = createMapOfNumberAirports(airports)
 
-    ListMap(mapOfNumber.toSeq.sortWith(_._2 > _._2):_*).take(10)
+    ListMap(mapOfNumber.toSeq.sortWith(_._2 > _._2):_*)
+      .take(10)
   }
 
 
@@ -17,7 +18,8 @@ class ReportService {
   def getTenCountriesLowestNumberOfAirports(airports : List[Airport]): Map[String, Int] = {
     val mapOfNumber = createMapOfNumberAirports(airports)
 
-    ListMap(mapOfNumber.toSeq.sortWith(_._2 < _._2):_*).take(10)
+    ListMap(mapOfNumber.toSeq.sortWith(_._2 < _._2):_*)
+      .take(10)
   }
 
 
@@ -70,7 +72,30 @@ class ReportService {
     aux(airports, runways, Map[String,Set[String]]())
   }
 
-  def getTenMostCommonRunwaysLatitude(runways: List[Runway]): List[Float] = {
-    null
+  def getTenMostCommonRunwaysLatitude(runways: List[Runway]): Set[String] = {
+    def aux(runways: List[Runway], acc: Map[String, Int]) : Map[String,Int] = runways match {
+      case Nil => acc
+      case x :: xs =>
+        val key = x.leIdent
+        key match {
+          case None => aux(xs, acc)
+          case Some(keyValue) =>{
+            if(acc.contains(keyValue)){
+              val nb = acc(keyValue)
+              val acc2 = acc.-(keyValue)
+              aux(xs, acc2 + (keyValue -> (nb+1)) )
+            }else{
+              aux( xs, acc + (keyValue -> (1)) )
+            }
+          }
+        }
+    }
+
+
+    val frequencyMap = aux(runways, Map[String,Int]())
+    ListMap(frequencyMap.toSeq.sortWith(_._2 > _._2):_*)
+      .take(10)
+      .map(x =>  x._1)
+      .toSet
   }
 }
