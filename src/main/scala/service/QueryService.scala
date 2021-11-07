@@ -1,7 +1,6 @@
 package service
 
 import models.{Airport, Country, Runway}
-import models.response.QueryResponse
 
 class QueryService {
 
