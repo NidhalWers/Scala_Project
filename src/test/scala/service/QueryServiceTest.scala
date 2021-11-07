@@ -213,7 +213,6 @@ class QueryServiceTest extends org.scalatest.FunSuite {
 
    //then
    assert(actual!=null)
-   println("\n\n\n uuuuuuuuu "+actual)
    assert(actual.contains(Some("airport_1")) )
    assert(actual( Some("airport_1") ).equals(List()))
    assert(actual.contains(Some("airport_3")) )
