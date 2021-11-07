@@ -11,25 +11,25 @@ class RunwayService {
   }
 
   /**
-   * create a hashmap with the name of airport in key and the List of runways in value
+   * create a hmap with the name of airport in key and the List of runways in value
    * @param airports : list of (ident, name)
    * @param runways
    * @return
    */
-  def getRunwaysInAirport(airports: List[ (Option[String],Option[String])], runways: Iterator[Runway]): Map[Option[String], List[Product]] = {
-    //println(runways.toList)
-    def aux(airports: List[ (Option[String],Option[String]) ], runways: Iterator[Runway], acc: Map[Option[String], List[Product]] ): Map[Option[String], List[Product]] = airports match{
+  def getRunwaysInAirportList(airports: List[ (Option[String],Option[String])], runways: List[Runway]): Map[Option[String], List[String]] = {
+    def aux(airports: List[ (Option[String],Option[String]) ], runways: List[Runway], acc: Map[Option[String], List[String]] ): Map[Option[String], List[String]] = airports match{
       case Nil => acc
       case ( ident, name ) :: xs =>
-        //println("ident : " + ident)
-        val choosedRunways = runways.filter( r => r.airportIdent match {
-          case None => false
-          case value => value.equals(ident)
-        }).map(r => r.id).toList
-        aux(xs, runways, acc + ( name -> choosedRunways ) )
-
+        aux(xs, runways, acc + ( name -> getRunwaysInAirport(ident, runways) ) )
     }
-    aux(airports, runways, Map[Option[String], List[Runway]]())
+    aux(airports, runways, Map[Option[String], List[String]]())
+  }
+
+  private def getRunwaysInAirport(airportIdent: Option[String], runways: List[Runway] ) : List[String] = {
+    runways.filter( r => r.airportIdent match {
+      case None => false
+      case Some(value) => value.equals(airportIdent.get)
+    }).map(r => "id = " + r.id.get)
   }
 
 }

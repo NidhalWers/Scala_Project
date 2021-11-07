@@ -8,7 +8,7 @@ class ConsoleController {
   val countryService = new CountryService
   val queryService = new QueryService
 
-  def queryAndReports( airports: Iterator[Airport], countries: Iterator[Country], runways: Iterator[Runway] ): Unit = {
+  def queryAndReports( airports: List[Airport], countries: List[Country], runways: List[Runway] ): Unit = {
     println("Please choose between option 1 & 2 :\n\t1 - Query\n\t2 - Reports")
     val input = scala.io.StdIn.readInt()
     input match {
@@ -18,7 +18,7 @@ class ConsoleController {
     }
   }
 
-  private def query( airports: Iterator[Airport], countries: Iterator[Country], runways: Iterator[Runway] ): Unit ={
+  private def query( airports: List[Airport], countries: List[Country], runways: List[Runway] ): Unit ={
     println("please enter the country code or the country name" )
     val input = scala.io.StdIn.readLine()
     if ( countryService.isStringCountryCode(input) ){
@@ -30,7 +30,7 @@ class ConsoleController {
     }
   }
 
-  private def report( airports: Iterator[Airport], countries: Iterator[Country], runways: Iterator[Runway] ): Unit ={
+  private def report( airports: List[Airport], countries: List[Country], runways: List[Runway] ): Unit ={
     println("This is a menu")
   }
 

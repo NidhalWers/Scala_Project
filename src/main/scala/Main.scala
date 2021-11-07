@@ -41,7 +41,7 @@ object Main {
     }
     */
 
-    consoleController.queryAndReports( airports, countries, runways )
+    consoleController.queryAndReports( airports.toList, countries.toList, runways.toList)
   }
 
 }
