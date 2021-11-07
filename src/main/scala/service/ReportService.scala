@@ -40,8 +40,34 @@ class ReportService {
   }
 
 
-  def getTypeOfRunwaysPerCountry(airports : List[Airport], runways: List[Runway]): Map[ String,List[String] ] = {
-    null
+  def getTypeOfRunwaysPerCountry(airports : List[Airport], runways: List[Runway]): Map[ String,Set[String] ] = {
+    def aux(airports : List[Airport], runways: List[Runway], acc: Map[ String,Set[String] ] ): Map[ String,Set[String] ] = runways match {
+      case Nil => acc
+      case x :: xs => {
+        x.surface match{
+          case None => aux(airports, xs, acc)
+          case Some(_) => {
+            val airportOfRunway = airports.find(a => a.ident.equals(x.airportIdent))
+            airportOfRunway match {
+              case None => aux(airports, xs, acc)
+              case Some(value) => {
+                val key = value.isoCountry.get
+                if (acc.contains(key)) {
+                  val setOfCountry = acc(key)
+                  val acc2 = acc.-(key)
+                  aux(airports, xs, acc2 + (key -> (setOfCountry + x.surface.get )))
+                } else {
+                  aux(airports, xs, acc + (key -> (Set() + x.surface.get )))
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+
+
+    aux(airports, runways, Map[String,Set[String]]())
   }
 
   def getTenMostCommonRunwaysLatitude(runways: List[Runway]): List[Float] = {

@@ -48,7 +48,8 @@ class ConsoleController {
       "\n\t1 - 10 countries with highest number of airports" +
       "\n\t2 - 10 countries with lowest number of airports " +
       "\n\t3 - Type of runways per country" +
-      "\n\t4 - The top 10 most common runway latitude")
+      "\n\t4 - The top 10 most common runway latitude" +
+      "\n\t5 - Back to the main menu")
 
     val input = scala.io.StdIn.readLine()
     input match {
@@ -65,18 +66,18 @@ class ConsoleController {
         queryAndReports(airports,countries,runways)
       }
       case "3" => {
-        reportService.getTypeOfRunwaysPerCountry(airports, runways)
+        val result = reportService.getTypeOfRunwaysPerCountry(airports, runways)
+        println(result.mkString("\n"))
 
         queryAndReports(airports,countries,runways)
       }
       case "4" => {
-        reportService.getTenMostCommonRunwaysLatitude(runways)
+        val result = reportService.getTenMostCommonRunwaysLatitude(runways)
+        println(result)
 
         queryAndReports(airports,countries,runways)
       }
       case "5" => {
-        report(airports, countries, runways)
-
         queryAndReports(airports,countries,runways)
       }
     }
