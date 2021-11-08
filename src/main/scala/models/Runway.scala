@@ -2,6 +2,7 @@ package models
 
 import service.Utils
 
+//todo revoir les types
 case class Runway(id : Option[Int],
                   airportRef : Option[Int],
                   airportIdent: Option[String],
