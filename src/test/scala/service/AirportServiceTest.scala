@@ -77,7 +77,7 @@ class AirportServiceTest extends org.scalatest.FunSuite {
   }
 
   test("testConvertFileToAirports") {
-    val file = "src/test/ressource/testAirport.csv"
+    val file = "src/test/test_ressource/testAirport.csv"
     val actual = airportService.convertFileToAirports(file).next()
     assert( actual.id.get == 6523 )
     assert( actual.ident.get.equals("\"00A\""))

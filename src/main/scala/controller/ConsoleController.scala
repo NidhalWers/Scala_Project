@@ -79,7 +79,7 @@ class ConsoleController {
       "\n\t2 - 10 countries with lowest number of airports " +
       "\n\t3 - Type of runways per country" +
       "\n\t4 - The top 10 most common runway latitude" +
-      "\n\t5 - Back to the main menu")
+      "\n\t5 - Back   to the main menu")
 
     val input = scala.io.StdIn.readLine()
     input match {

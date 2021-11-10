@@ -64,7 +64,7 @@ class RunwayServiceTest extends org.scalatest.FunSuite {
   }
 
   test("testConvertFileToRunways") {
-    val file = "src/test/ressource/testRunways.csv"
+    val file = "src/test/test_ressource/testRunways.csv"
     val actual = runwayService.convertFileToRunways(file).next()
     assert( actual.id.get == 269408 )
     assert( actual.airportRef.get == 6523)
