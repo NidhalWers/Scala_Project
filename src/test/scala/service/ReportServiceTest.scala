@@ -59,8 +59,6 @@ class ReportServiceTest extends org.scalatest.FunSuite {
 
     assert(actual!=null)
 
-    println("\n\n\n uuuuuuuuuuuuuu\n\n "+ (actual("\"GR\"").contains("\"ASP\""))+"\n\n\nuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu")
-
     assert(actual("\"GR\"").equals(Set("\"ASP\"", "\"UNK\"", "\"PEM\"")))
 
     assert(actual("\"LY\"").equals(HashSet("\"COP\"", "\"ASP\"", "\"CON\"", "\"SAN\"", "\"GVL\"")))
@@ -213,9 +211,9 @@ class ReportServiceTest extends org.scalatest.FunSuite {
 
     assert(actual("\"IL\"").equals( Set("\"ASP\"", "\"PEM\"", "\"Asphalt\"")))
 
-    assert(actual("\"CZ\"").equals( HashSet("\"Asphalt\"", "\"ASP\"", "\"CON\"", "\"UNK\"", "\"grass\"", "\"GRS", "\"Grass\"")))
+    assert(actual("\"CZ\"").equals( HashSet("\"Asphalt\"", "\"ASP\"", "\"CON\"", "\"UNK\"", "\"grass\"", "\"GRS\"", "\"Grass\"")))
 
-    assert(actual("\"AU\"").equals( HashSet("\"COP\"", "\"NSGG\"", "\"X\"", "\"GRE\"", "\"N", "\"CON\"", "\"XU\"", "\"XSA\"", "\"GVL\"", "\"gravel\"", "\"TURF\"", "\"COM\"", "\"GG\"", "\"paved\"", "\"PEM\"", "\"unsealed\"", "\"Asphalt\"", "\"Grass and granite sand\"", "\"ASP\"", "\"B\"", "\"sealed\"", "\"S\"", "\"SU\"", "\"UNK\"", "\"NRC\"", "\"XS\"", "\"CLA\"", "\"dirt\"", "\"PER\"", "\"Gravel\"", "\"XUG\"", "\"G\"", "\"BIT\"", "\"SAN\"", "\"L\"", "\"Grass/Gravel\"", "\"C\"", "\"grass\"", "\"UG\"", "\"Grass\"", "\"Earth/sand\"", "\"GRS\"", "\"H\"", "\"NW\"")))
+    assert(actual("\"AU\"").equals( HashSet("\"COP\"", "\"NSGG\"", "\"X\"", "\"GRE\"", "\"N\"", "\"CON\"", "\"XU\"", "\"XSA\"", "\"GVL\"", "\"gravel\"", "\"TURF\"", "\"COM\"", "\"GG\"", "\"paved\"", "\"PEM\"", "\"unsealed\"", "\"Asphalt\"", "\"Grass and granite sand\"", "\"ASP\"", "\"B\"", "\"sealed\"", "\"S\"", "\"SU\"", "\"UNK\"", "\"NRC\"", "\"XS\"", "\"CLA\"", "\"dirt\"", "\"PER\"", "\"Gravel\"", "\"XUG\"", "\"G\"", "\"BIT\"", "\"SAN\"", "\"L\"", "\"Grass/Gravel\"", "\"C\"", "\"grass\"", "\"UG\"", "\"Grass\"", "\"Earth/sand\"", "\"GRS\"", "\"H\"", "\"NW\"")))
 
     assert(actual("\"CV\"").equals( Set("\"ASP\"", "\"UNK\"")))
 
@@ -273,7 +271,7 @@ class ReportServiceTest extends org.scalatest.FunSuite {
 
     assert(actual("\"EG\"").equals( Set("\"ASP\"", "\"Asphalt\"", "\"UNK\"")))
 
-    assert(actual("\"RU\"").equals( HashSet("\"PEM\"", "\"Asphalt\"", "\"ASP\"", "\"concrete\"", "\"GRE\"", "\"CON", "\"UNK\"", "\"Concrete\"", "\"Ground\"", "\"'concrete'\"", "\"grass\"", "\"GRS\"", "\"Grass\"")))
+    assert(actual("\"RU\"").equals( HashSet("\"PEM\"", "\"Asphalt\"", "\"ASP\"", "\"concrete\"", "\"GRE\"", "\"CON\"", "\"UNK\"", "\"Concrete\"", "\"Ground\"", "\"'concrete'\"", "\"grass\"", "\"GRS\"", "\"Grass\"")))
 
     assert(actual("\"GM\"").equals( Set("\"ASP\"")))
 
@@ -379,7 +377,7 @@ class ReportServiceTest extends org.scalatest.FunSuite {
 
     assert(actual("\"ME\"").equals( Set("\"GRS\"", "\"ASP\"")))
 
-    assert(actual("\"FI\"").equals( HashSet("COM", "COP", "GRASS", "Asphalt", "GRVL/GRASS", "Oilgravel", "GVL", "Sand", "ASPH", "ASPH/GRASS", "ASPH/GRVL", "ASP", "Oligravel/GRVL", "Oilgravel/sand", "sand/grass", "GRVL", "grass")))
+    assert(actual("\"FI\"").equals( HashSet("\"COM\"", "\"COP\"", "\"GRASS\"", "\"Asphalt\"", "\"GRVL/GRASS\"", "\"Oilgravel\"", "\"GVL\"", "\"Sand\"", "\"ASPH\"", "\"ASPH/GRASS\"", "\"ASPH/GRVL\"", "\"ASP\"", "\"Oligravel/GRVL\"", "\"Oilgravel/sand\"", "\"sand/grass\"", "\"GRVL\"", "\"grass\"")))
 
     assert(actual("\"TN\"").equals( Set("\"ASP\"", "\"PEM\"", "\"CON\"")))
 
@@ -405,7 +403,7 @@ class ReportServiceTest extends org.scalatest.FunSuite {
 
     assert(actual("\"BD\"").equals( Set("\"ASP\"", "\"PEM\"", "\"CON\"")))
 
-    assert(actual("\"SK\"").equals( HashSet("\"ASP\"", "CON\"", "\"UNK\"", "\"grass\"", "\"GRS\"")))
+    assert(actual("\"SK\"").equals( HashSet("\"ASP\"", "\"CON\"", "\"UNK\"", "\"grass\"", "\"GRS\"")))
 
     assert(actual("\"BR\"").equals( HashSet("\"GRV\"", "\"GRASS\"", "\"ASP/GRE\"", "\"MET/CON\"", "\"GRVL/PIÇ\"", "\"ASP\"", "\"CON\"", "\"UNK\"", "\"Gravel\"", "\"CON/MET\"", "\"MTAL\"", "\"GRAVEL\"", "\"ARG\"", "\"conc\"", "\"MET\"", "\"GVL\"", "\"PIÇ\"", "\"PIC\"", "\"SAI\"", "\"Asphalt\"", "\"ASP/GRS\"", "\"GRE\"", "\"TER\"", "\"GRE/GRS\"", "\"SAND\"", "\"CONC/MTAL\"", "\"WOOD\"", "\"GRVL\"", "\"CON/GRS\"", "\"GRS\"", "\"CON/ASP\"", "\"Grass\"", "\"CONC\"", "\"ASPH\"")))
 
