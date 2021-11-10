@@ -41,5 +41,9 @@ class Utils {
     }
   }
 
+  def isIndexForCompletion(s: String, size: Int) : Boolean = {
+    s.forall(_.isDigit) && (s.toInt <= size)
+  }
+
 
 }
