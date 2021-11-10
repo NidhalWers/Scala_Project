@@ -41,7 +41,7 @@ class CountryServiceTest extends org.scalatest.FunSuite {
 
 
   test("testConvertFileToCountries") {
-    val file = "src/test/ressource/testContries.csv"
+    val file = "src/test/test_ressource/testContries.csv"
     val actual = countryService.convertFileToCountries(file).next()
     assert( actual.id.get == 302672 )
     assert( actual.code.get.equals("\"AD\""))

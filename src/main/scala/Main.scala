@@ -18,30 +18,10 @@ object Main {
     val countries = countryService.convertFileToCountries("resources/countries.csv")
 
     val runways = runwayService.convertFileToRunways("resources/runways.csv")
-    /*
-    println("-----------------------------------------------------\n\n\tthe airports\n")
-    var n =0
-    while (n<=10 && airports.hasNext){
-      println(airports.next().name)
-      n+=1
-    }
 
-    n = 0
-    println("end airports\n\n\n-------------------------------------------------\n\n\tthe countries\n")
-    while (n<=10 &&  countries.hasNext){
-      println(countries.next().name)
-      n+=1
-    }
+    val listOfCodesAndNames = countryService.getListOfCodesAndNames(countries.toList)
 
-    n = 0
-    println("end countries\n\n\n------------------------------------------------\n\n\tthe runways\n")
-    while (n<=10 &&  runways.hasNext){
-      println(runways.next().airportIdent)
-      n+=1
-    }
-    */
-
-    consoleController.queryAndReports( airports.toList, countries.toList, runways.toList)
+    consoleController.queryAndReports( airports.toList, countries.toList, runways.toList, listOfCodesAndNames)
   }
 
 }
