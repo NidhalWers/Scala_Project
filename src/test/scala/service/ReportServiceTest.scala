@@ -59,93 +59,93 @@ class ReportServiceTest extends org.scalatest.FunSuite {
 
     assert(actual!=null)
 
-    println("\n\n\n uuuuuuuuuuuuuu\n\n "+ (actual("\"GR\"") == (Set("ASP", "UNK", "PEM")))+"\n\n\nuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu")
+    println("\n\n\n uuuuuuuuuuuuuu\n\n "+ (actual("\"GR\"").contains("\"ASP\""))+"\n\n\nuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu")
 
-    assert(actual("\"GR\"").equals(Set("ASP", "UNK", "PEM")))
+    assert(actual("\"GR\"").equals(Set("\"ASP\"", "\"UNK\"", "\"PEM\"")))
 
-    assert(actual("\"LY\"").equals(HashSet("COP", "ASP", "CON", "SAN", "GVL")))
+    assert(actual("\"LY\"").equals(HashSet("\"COP\"", "\"ASP\"", "\"CON\"", "\"SAN\"", "\"GVL\"")))
 
-    assert(actual("\"LU\"").equals(Set("PEM", "grass")))
+    assert(actual("\"LU\"").equals(Set("\"PEM\"", "\"grass\"")))
 
-    assert(actual("\"OM\"").equals(Set("ASP", "GVL", "GRE")))
+    assert(actual("\"OM\"").equals(Set("\"ASP\"", "\"GVL\"", "\"GRE\"")))
 
-    assert(actual("\"GF\"").equals(Set("ASP", "CON")))
+    assert(actual("\"GF\"").equals(Set("\"ASP\"", "\"CON\"")))
 
-    assert(actual("\"SE\"").equals(HashSet("PEM", "Asphalt", "ASP", "GRE", "CON", "UNK", "Gravel", "Pavement", "grass", "GRS", "Grass")))
+    assert(actual("\"SE\"").equals(HashSet("\"PEM\"", "\"Asphalt\"", "\"ASP\"", "\"GRE\"", "\"CON\"", "\"UNK\"", "\"Gravel\"", "\"Pavement\"", "\"grass\"", "\"GRS\"", "\"Grass\"")))
 
-    assert(actual("\"CG\"").equals(Set("ASP", "UNK")))
+    assert(actual("\"CG\"").equals(Set("\"ASP\"", "\"UNK\"")))
 
-    assert(actual("\"CO\"").equals(Set("ASP", "UNK", "CON", "GRE")))
+    assert(actual("\"CO\"").equals(Set("\"ASP\"", "\"UNK\"", "\"CON\"", "\"GRE\"")))
 
-    assert(actual("\"MD\"").equals(Set("CON", "grass")))
+    assert(actual("\"MD\"").equals(Set("\"CON\"", "\"grass\"")))
 
-    assert(actual("\"MY\"").equals(Set("ASP", "GRE", "paved")))
+    assert(actual("\"MY\"").equals(Set("\"ASP\"", "\"GRE\"", "\"paved\"")))
 
-    assert(actual("\"NC\"").equals(HashSet("Asphalt", "ASP", "MAC", "UNK", "Paved/Gravel", "Paved/Compacted schist")))
+    assert(actual("\"NC\"").equals(HashSet("\"Asphalt\"", "\"ASP\"", "\"MAC\"", "\"UNK\"", "\"Paved/Gravel\"", "\"Paved/Compacted schist\"")))
 
-    assert(actual("\"FK\"").equals(Set("ASP")))
+    assert(actual("\"FK\"").equals(Set("\"ASP\"")))
 
-    assert(actual("\"AI\"").equals(Set("ASP")))
+    assert(actual("\"AI\"").equals(Set("\"ASP\"")))
 
-    assert(actual("\"CK\"").equals(Set("COR", "ASP", "UNK", "CON")))
+    assert(actual("\"CK\"").equals(Set("\"COR\"", "\"ASP\"", "\"UNK\"", "\"CON\"")))
 
-    assert(actual("\"GY\"").equals(Set("ASP", "concrete")))
+    assert(actual("\"GY\"").equals(Set("\"ASP\"", "\"concrete\"")))
 
-    assert(actual("\"IT\"").equals(HashSet("ground", "ASP", "concrete", "GRE", "UNK", "asphalt", "BIT", "grass", "BITUMINOUS", "dirt", "GRS", "Grass")))
+    assert(actual("\"IT\"").equals(HashSet("\"ground\"", "\"ASP\"", "\"concrete\"", "\"GRE\"", "\"UNK\"", "\"asphalt\"", "\"BIT\"", "\"grass\"", "\"BITUMINOUS\"", "\"dirt\"", "\"GRS\"", "\"Grass\"")))
 
-    assert(actual("\"GG\"").equals(Set("GRE", "ASP")))
+    assert(actual("\"GG\"").equals(Set("\"GRE\"", "\"ASP\"")))
 
-    assert(actual("\"NP\"").equals(Set("ASP", "UNK", "asphalt")))
+    assert(actual("\"NP\"").equals(Set("\"ASP\"", "\"UNK\"", "\"asphalt\"")))
 
-    assert(actual("\"MX\"").equals(HashSet("paved", "Soil", "Asphalt", "ASP", "GRE", "CON", "UNK", "asphalt", "ASPHALTH", "packed dirt", "concrete")))
+    assert(actual("\"MX\"").equals(HashSet("\"paved\"", "\"Soil\"", "\"Asphalt\"", "\"ASP\"", "\"GRE\"", "\"CON\"", "\"UNK\"", "\"asphalt\"", "\"ASPHALTH\"", "\"packed dirt\"", "\"concrete\"")))
 
-    assert(actual("\"TV\"").equals(Set("UNK")))
+    assert(actual("\"TV\"").equals(Set("\"UNK\"")))
 
-    assert(actual("\"BQ\"").equals(Set("ASP")))
+    assert(actual("\"BQ\"").equals(Set("\"ASP\"")))
 
-    assert(actual("\"LR\"").equals(Set("ASP")))
+    assert(actual("\"LR\"").equals(Set("\"ASP\"")))
 
-    assert(actual("\"IM\"").equals(Set("ASP")))
+    assert(actual("\"IM\"").equals(Set("\"ASP\"")))
 
-    assert(actual("\"PR\"").equals(HashSet("TURF", "ASPH-CONC", "ASP", "CON", "ASPH-G", "ASPH-F", "WATER", "ASPH")))
+    assert(actual("\"PR\"").equals(HashSet("\"TURF\"", "\"ASPH-CONC\"", "\"ASP\"", "\"CON\"", "\"ASPH-G\"", "\"ASPH-F\"", "\"WATER\"", "\"ASPH\"")))
 
-    assert(actual("\"CW\"").equals(Set("ASP")))
+    assert(actual("\"CW\"").equals(Set("\"ASP\"")))
 
-    assert(actual("\"RW\"").equals(Set("ASP", "'asphalt'", "grass")))
+    assert(actual("\"RW\"").equals(Set("\"ASP\"", "\"'asphalt'\"", "\"grass\"")))
 
-    assert(actual("\"BT\"").equals(Set("BIT", "Asphalt", "ASP")))
+    assert(actual("\"BT\"").equals(Set("\"BIT\"", "\"Asphalt\"", "\"ASP\"")))
 
-    assert(actual("\"LS\"").equals(Set("ASP", "GRE")))
+    assert(actual("\"LS\"").equals(Set("\"ASP\"", "\"GRE\"")))
 
-    assert(actual("\"DZ\"").equals(HashSet("PEM", "ASP", "GRE", "CON", "UNK", "BIT", "SAN")))
+    assert(actual("\"DZ\"").equals(HashSet("\"PEM\"", "\"ASP\"", "\"GRE\"", "\"CON\"", "\"UNK\"", "\"BIT\"", "\"SAN\"")))
 
-    assert(actual("\"BF\"").equals(Set("ASP", "LAT")))
+    assert(actual("\"BF\"").equals(Set("\"ASP\"", "\"LAT\"")))
 
-    assert(actual("\"PW\"").equals(Set("GRVL-F", "GRAVEL-F", "ASP")))
+    assert(actual("\"PW\"").equals(Set("\"GRVL-F\"", "\"GRAVEL-F\"", "\"ASP\"")))
 
-    assert(actual("\"EC\"").equals(Set("ASP", "UNK", "Paviment hard")))
+    assert(actual("\"EC\"").equals(Set("\"ASP\"", "\"UNK\"", "\"Paviment hard\"")))
 
-    assert(actual("\"MG\"").equals(Set("PEM", "ASP", "COP", "BIT")))
+    assert(actual("\"MG\"").equals(Set("\"PEM\"", "\"ASP\"", "\"COP\"", "\"BIT\"")))
 
-    assert(actual("\"LV\"").equals(Set("ASP", "PEM", "CON")))
+    assert(actual("\"LV\"").equals(Set("\"ASP\"", "\"PEM\"", "\"CON\"")))
 
-    assert(actual("\"MQ\"").equals(Set("ASP")))
+    assert(actual("\"MQ\"").equals(Set("\"ASP\"")))
 
-    assert(actual("\"GL\"").equals(HashSet("ICE", "ASP", "CON", "UNK", "GVL", "ASPH")))
+    assert(actual("\"GL\"").equals(HashSet("\"ICE\"", "\"ASP\"", "\"CON\"", "\"UNK\"", "\"GVL\"", "\"ASPH\"")))
 
-    assert(actual("\"KI\"").equals(Set("BIT", "COR", "ASP")))
+    assert(actual("\"KI\"").equals(Set("\"BIT\"", "\"COR\"", "\"ASP\"")))
 
-    assert(actual("\"SA\"").equals(HashSet("ASP", "CON", "UNK", "BIT", "SAN")))
+    assert(actual("\"SA\"").equals(HashSet("\"ASP\"", "\"CON\"", "\"UNK\"", "\"BIT\"", "\"SAN\"")))
 
-    assert(actual("\"BH\"").equals(Set("ASP")))
+    assert(actual("\"BH\"").equals(Set("\"ASP\"")))
 
-    assert(actual("\"ET\"").equals(Set("ASP", "PEM", "CON")))
+    assert(actual("\"ET\"").equals(Set("\"ASP\"", "\"PEM\"", "\"CON\"")))
 
-    assert(actual("\"GU\"").equals(Set("PEM", "ASP")))
+    assert(actual("\"GU\"").equals(Set("\"PEM\"", "\"ASP\"")))
 
-    assert(actual("\"JE\"").equals(Set("ASP")))
+    assert(actual("\"JE\"").equals(Set("\"ASP\"")))
 
-    assert(actual("\"EH\"").equals(Set("ASP")))
+    assert(actual("\"EH\"").equals(Set("\"ASP\"")))
 
     assert(actual("\"MK\"").equals(Set("GRE", "GRS", "CON", "ASP")))
 
