@@ -21,7 +21,7 @@ class ConsoleController {
     input match {
       case "1" => query( airports, countries, runways, listOfCodesAndNames )
       case "2" => report( airports, countries, runways, listOfCodesAndNames )
-      case "3" => println("good by")
+      case "3" => println("good bye")
       case _ => queryAndReports( airports, countries, runways, listOfCodesAndNames )
     }
   }
@@ -31,13 +31,18 @@ class ConsoleController {
     val input = scala.io.StdIn.readLine()
     if ( countryService.isStringCountryCode("\""+input+"\"", listOfCodesAndNames.map(s => s._2)) ){
       val result = queryService.queryCode("\""+input+"\"", airports, runways)
-      println(result.map{case (k,v) => k + " : "+ v }.mkString("\n")  )
+      println("\n\tHere are the the airports & runways at each airport for this country \n\n"
+        + result.map{case (k,v) => "%60s".format(k.get) + " ----------->\t"+ v.mkString("\t|\t")  }.mkString("\n")
+      )
 
       queryAndReports(airports,countries,runways, listOfCodesAndNames)
     }else{
       if( countryService.isStringCountryName("\""+input+"\"", listOfCodesAndNames.map(s=> s._1)) ){
         val result = queryService.queryName("\""+input+"\"", countries, airports, runways)
-        println(result.map{case (k,v) => k + " : "+ v }.mkString("\n")  )
+        println("\n\tHere are the the airports & runways at each airport for this country \n\n"
+          + result.map{case (k,v) => "%60s".format(k.get) + " ----------->\t"+ v.mkString("\t|\t")  }.mkString("\n")
+        )
+
       }else{
         val completionList = countryService.nameCompletion("\""+input, listOfCodesAndNames.map(s=> s._1))
         completionList match {
@@ -49,7 +54,10 @@ class ConsoleController {
             inputYesOrNo match{
               case "1" => {
                 val result = queryService.queryName(completionList(0), countries, airports, runways)
-                println(result.map{case (k,v) => k + " : "+ v }.mkString("\n")  )
+                println("\n\tHere are the the airports & runways at each airport for this country \n\n"
+                  + result.map{case (k,v) => "%60s".format(k.get) + " ----------->\t"+ v.mkString("\t|\t")  }.mkString("\n")
+                )
+
               }
               case "2" => queryAndReports(airports,countries,runways, listOfCodesAndNames)
               case _ => query(airports, countries, runways, listOfCodesAndNames)
@@ -61,7 +69,10 @@ class ConsoleController {
             val completInput = scala.io.StdIn.readLine()
             if (utils.isIndexForCompletion(completInput, completionList.size)) {
               val result = queryService.queryName(completionList(completInput.toInt - 1), countries, airports, runways)
-              println(result.map{case (k,v) => k + " : "+ v }.mkString("\n")  )
+              println("\n\tHere are the the airports & runways at each airport for this country \n\n"
+                + result.map{case (k,v) => "%60s".format(k.get) + " ----------->\t"+ v.mkString("\t|\t")  }.mkString("\n")
+              )
+
             }
           }
         }
@@ -85,25 +96,25 @@ class ConsoleController {
     input match {
       case "1" => {
         val result = reportService.getTenCountriesHighestNumberOfAirports(airports)
-        println(result)
+        println("\n\there are the 10 countries with highest number of airports (with count)\n"+result.mkString("\n\t\t"))
 
         queryAndReports(airports,countries,runways, listOfCodesAndNames)
       }
       case "2" => {
         val result = reportService.getTenCountriesLowestNumberOfAirports(airports)
-        println(result)
+        println("\n\there are the 10 countries with lowest number of airports (with count)\n"+result.mkString("\n\t\t"))
 
         queryAndReports(airports,countries,runways, listOfCodesAndNames)
       }
       case "3" => {
         val result = reportService.getTypeOfRunwaysPerCountry(airports, runways)
-        println(result.mkString("\n"))
+        println("\n\tHere are the type of runways per country\n"+result.mkString("\n\n"))
 
         queryAndReports(airports,countries,runways, listOfCodesAndNames)
       }
       case "4" => {
         val result = reportService.getTenMostCommonRunwaysLatitude(runways)
-        println(result)
+        println("\n\tThe top 10 most common runway latitude\n"+result.mkString("\n\t\t"))
 
         queryAndReports(airports,countries,runways, listOfCodesAndNames)
       }

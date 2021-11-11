@@ -29,7 +29,7 @@ class RunwayService {
     runways.filter( r => r.airportIdent match {
       case None => false
       case Some(value) => value.equals(airportIdent.get)
-    }).map(r => "id = " + r.id.get)
+    }).map(r => "runway id = " + r.id.get)
   }
 
 }
