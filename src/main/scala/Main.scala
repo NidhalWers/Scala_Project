@@ -13,15 +13,15 @@ object Main {
   //todo supprimer les var n,
   // là c'est juste pour voir la donnée facilement
   def main(args: Array[String]): Unit = {
-    val airports = airportService.convertFileToAirports("resources/airports.csv")
+    val airports = airportService.convertFileToAirports("resources/airports.csv").toList
 
-    val countries = countryService.convertFileToCountries("resources/countries.csv")
+    val countries = countryService.convertFileToCountries("resources/countries.csv").toList
 
-    val runways = runwayService.convertFileToRunways("resources/runways.csv")
+    val runways = runwayService.convertFileToRunways("resources/runways.csv").toList
 
-    val listOfCodesAndNames = countryService.getListOfCodesAndNames(countries.toList)
+    val listOfCodesAndNames = countryService.getListOfCodesAndNames(countries)
 
-    consoleController.queryAndReports( airports.toList, countries.toList, runways.toList, listOfCodesAndNames)
+    consoleController.queryAndReports( airports, countries, runways, listOfCodesAndNames)
   }
 
 }

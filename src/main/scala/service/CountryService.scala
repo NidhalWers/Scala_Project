@@ -35,7 +35,7 @@ class CountryService {
 
   def getCodeFromName(countryName : String, countries: List[Country]): Option[String] = {
     val countryResult = countries.find( c => c.name match{
-      case None => false
+      case None => println("no name"); false
       case Some(value) => value.equals(countryName)
     }  )
 

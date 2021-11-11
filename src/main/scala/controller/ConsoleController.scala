@@ -37,7 +37,7 @@ class ConsoleController {
     }else{
       if( countryService.isStringCountryName("\""+input+"\"", listOfCodesAndNames.map(s=> s._1)) ){
         val result = queryService.queryName("\""+input+"\"", countries, airports, runways)
-        println(result)
+        println(result.map{case (k,v) => k + " : "+ v }.mkString("\n")  )
       }else{
         val completionList = countryService.nameCompletion("\""+input, listOfCodesAndNames.map(s=> s._1))
         completionList match {
@@ -49,7 +49,7 @@ class ConsoleController {
             inputYesOrNo match{
               case "1" => {
                 val result = queryService.queryName(completionList(0), countries, airports, runways)
-                println(result)
+                println(result.map{case (k,v) => k + " : "+ v }.mkString("\n")  )
               }
               case "2" => queryAndReports(airports,countries,runways, listOfCodesAndNames)
               case _ => query(airports, countries, runways, listOfCodesAndNames)
@@ -61,7 +61,7 @@ class ConsoleController {
             val completInput = scala.io.StdIn.readLine()
             if (utils.isIndexForCompletion(completInput, completionList.size)) {
               val result = queryService.queryName(completionList(completInput.toInt - 1), countries, airports, runways)
-              println(result)
+              println(result.map{case (k,v) => k + " : "+ v }.mkString("\n")  )
             }
           }
         }

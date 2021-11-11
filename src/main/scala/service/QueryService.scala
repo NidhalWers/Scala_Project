@@ -18,7 +18,6 @@ class QueryService {
 
 
   def queryName(countryName : String, countries: List[Country], airports: List[Airport], runways: List[Runway]) : Map[Option[String], List[String]] = {
-    println("\n\nuuu : \t"+  countryName +"\n\n")
     val code = countryService.getCodeFromName(countryName, countries)
     code match {
       case None => Map[Option[String], List[String]]()
