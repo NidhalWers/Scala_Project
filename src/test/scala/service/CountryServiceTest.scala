@@ -52,11 +52,47 @@ class CountryServiceTest extends org.scalatest.FunSuite {
 
   }
 
+  test("testListofCodesAndNames"){
+    val countries = countryService.convertFileToCountries("src/test/test_ressource/testContries.csv").toList
+
+    val actual = countryService.getListOfCodesAndNames(countries)
+
+    assert( actual != null )
+    assert( actual.size == 1)
+    assert( actual(0)._1.equals("\"Andorra\""))
+    assert( actual(0)._2.equals("\"AD\""))
+
+  }
+
+  test("testNameCompletion"){
+    val countries = countryService.convertFileToCountries("src/test/test_ressource/testContries.csv").toList
+    val listOfCodesAndNames = countryService.getListOfCodesAndNames(countries)
+
+    val actual = countryService.nameCompletion("\"and",listOfCodesAndNames.map(s => s._1))
+
+    assert( actual.size==1)
+    assert(actual.contains("\"Andorra\""))
+  }
+
+
   test("testIsStringCountryCode") {
-    assert(countryService.isStringCountryCode("FR"))
-    assert(! countryService.isStringCountryCode("France"))
-    assert(! countryService.isStringCountryCode("fr"))
-    assert(! countryService.isStringCountryCode("FRANCE"))
+    val countries = countryService.convertFileToCountries("src/test/test_ressource/testContries.csv").toList
+    val listOfCodesAndNames = countryService.getListOfCodesAndNames(countries)
+
+    assert(countryService.isStringCountryCode("\"AD\"", listOfCodesAndNames.map(s => s._2)))
+    assert(! countryService.isStringCountryCode("\"Andorra\"", listOfCodesAndNames.map(s => s._2)))
+    assert(! countryService.isStringCountryCode("\"ad\"", listOfCodesAndNames.map(s => s._2)))
+    assert(! countryService.isStringCountryCode("\"ANDORRA\"", listOfCodesAndNames.map(s => s._2)))
+  }
+
+  test("testIsStringCountryName") {
+    val countries = countryService.convertFileToCountries("src/test/test_ressource/testContries.csv").toList
+    val listOfCodesAndNames = countryService.getListOfCodesAndNames(countries)
+
+    assert(! countryService.isStringCountryName("\"AD\"", listOfCodesAndNames.map(s => s._1)))
+    assert(countryService.isStringCountryName("\"Andorra\"", listOfCodesAndNames.map(s => s._1)))
+    assert(! countryService.isStringCountryName("\"ad\"", listOfCodesAndNames.map(s => s._1)))
+    assert(! countryService.isStringCountryName("\"ANDORRA\"", listOfCodesAndNames.map(s => s._1)))
   }
 
 }
